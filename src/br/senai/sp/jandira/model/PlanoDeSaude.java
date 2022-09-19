@@ -9,7 +9,6 @@ public class PlanoDeSaude {
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
-	private String uau;
 	
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
@@ -41,7 +40,8 @@ public class PlanoDeSaude {
 		
 	}
 	
-	public LocalDate getValidade() {
-		return validade;
+	public int getValidade() {
+		Period p = Period.between(validade, LocalDate.now());
+		return p.getYears();
 	}
 }
