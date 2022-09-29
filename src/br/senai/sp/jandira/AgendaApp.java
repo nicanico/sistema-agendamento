@@ -24,6 +24,12 @@ public class AgendaApp {
 		planoDeSaude.setNumero("3658-7854-222-33");
 		planoDeSaude.setValidade(LocalDate.of(2023, 8, 20));
 		
+		PlanoDeSaude planoDeSaude2 = new PlanoDeSaude();
+		planoDeSaude2.setOperadora("Bradesco");
+		planoDeSaude2.setCategoria("Bronze");
+		planoDeSaude2.setNumero("4562-7854-222-63");
+		planoDeSaude2.setValidade(LocalDate.of(2023, 8, 21));
+		
 		// Criar objeto endereço
 		Endereco endereco = new Endereco();
 		endereco.setLogradouro("Rua Elto Silva");

@@ -9,6 +9,15 @@ public class PlanoDeSaude {
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
+	private static int quantidade;
+	
+	public PlanoDeSaude(String operadora) {
+		this.operadora = operadora;
+		this.quantidade++;
+	}
+	public PlanoDeSaude() {
+		this.quantidade++;
+	}
 	
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
@@ -43,5 +52,9 @@ public class PlanoDeSaude {
 	public int getValidade() {
 		Period p = Period.between(validade, LocalDate.now());
 		return p.getYears();
+	}
+	
+	public static int getQuantidade() {
+		return quantidade;
 	}
 }
