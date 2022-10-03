@@ -5,26 +5,60 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import br.senai.sp.jandira.AgendaApp;
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 
 public class TesteObjetos {
 
     public static void main(String[] args) {
-
+        
+        
+        
         Especialidade e1 = new Especialidade("Cardiologia");
         e1.setDescricao("não deixa ter um ataque");
+        
+        EspecialidadeDAO.gravar(e1);
 
         Especialidade e2 = new Especialidade("Gastrienterologia");
         e2.setDescricao("Não deixa ter dor de barriga");
-
+        
+        EspecialidadeDAO.gravar(e2);
+    
+ 
         Especialidade e4 = new Especialidade("Otorrino", "Cuida do ouvido");
-
+        EspecialidadeDAO.gravar(e4);
+        
         Especialidade e3 = new Especialidade();
         e3.setNome("Qualquer coisa!");
-        
+        EspecialidadeDAO.gravar(e3);
         Especialidade e5 = new Especialidade();
         e5.setNome("Especialidade 5");
+        EspecialidadeDAO.gravar(e5);
+        
+         for (Especialidade ee : EspecialidadeDAO.getEspecialidades()){
+            System.out.println(ee.getNome() + " - " + ee.getCodigo());
+        }
+         EspecialidadeDAO.excluir(101);
+         System.out.println("--------------");
+          for (Especialidade ee : EspecialidadeDAO.getEspecialidades()){
+             System.out.println(ee.getNome() + " - " + ee.getCodigo());
+        }
+        
+          System.out.println("-------BUSCA-------");
+          Especialidade procurada = EspecialidadeDAO.getEspecialidade(102);
+          System.out.println(procurada.getNome());
+          System.out.println("-------UPDATE------");
+          Especialidade especialidadeAtualizada = new Especialidade();
+          especialidadeAtualizada.setCodigo(102);
+          especialidadeAtualizada.setNome("Otorrinolaringologia");
+          especialidadeAtualizada.setDescricao("Nova descrição");
+          EspecialidadeDAO.atualizar(especialidadeAtualizada);
+          
+          System.out.println("-------NOVA BUSCA-------");
+          for (Especialidade ee : EspecialidadeDAO.getEspecialidades()){
+             System.out.println(ee.getNome() + " - " + ee.getCodigo());
+          }
         
         System.out.println("TOTAL ---------" + e1.getContador());
         System.out.println(e1.getCodigo() + "--" + e1.getNome());
