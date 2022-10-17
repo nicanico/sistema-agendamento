@@ -14,14 +14,33 @@ import javax.swing.JOptionPane;
  */
 public class EspecialidadesDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form EspecialidadesDialog
-     */
-    public EspecialidadesDialog(java.awt.Frame parent, boolean modal) {
+        Especialidade especialidade;
+    
+    public EspecialidadesDialog(
+            java.awt.Frame parent, 
+            boolean modal, 
+            Especialidade e) {
+        
+        super(parent, modal);
+        initComponents();
+        
+        especialidade = e;
+        
+        preencherFormulario();
+    }
+    
+    public EspecialidadesDialog(
+            java.awt.Frame parent, 
+            boolean modal) {
         super(parent, modal);
         initComponents();
     }
-
+    private void preencherFormulario() {
+        jLabelTitulo.setText("Especialidades - EDITAR");
+        jTextFieldCodigo.setText(especialidade.getCodigo().toString());
+        jTextFieldNome.setText(especialidade.getNome());
+        jTextFieldDescricao.setText(especialidade.getDescricao());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +51,7 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanelAdicionar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         panelDetalhesEspecialidade = new javax.swing.JPanel();
         jLabelDescricaoEspecialidade = new javax.swing.JLabel();
         jTextFieldDescricao = new javax.swing.JTextField();
@@ -49,12 +68,12 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
         jPanelAdicionar.setBackground(new java.awt.Color(255, 204, 204));
         jPanelAdicionar.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/editar.png"))); // NOI18N
-        jLabel1.setText("  Especialidades - Adicionar");
-        jPanelAdicionar.add(jLabel1);
-        jLabel1.setBounds(20, 10, 340, 40);
+        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/editar.png"))); // NOI18N
+        jLabelTitulo.setText("  Especialidades - Adicionar");
+        jPanelAdicionar.add(jLabelTitulo);
+        jLabelTitulo.setBounds(20, 10, 340, 40);
 
         getContentPane().add(jPanelAdicionar);
         jPanelAdicionar.setBounds(0, 0, 630, 60);
@@ -136,15 +155,17 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
        //Criar especialidade
-        Especialidade especialidade = new Especialidade();
-        especialidade.setNome(jTextFieldNome.getText());
-        especialidade.setDescricao(jTextFieldDescricao.getText());
-        EspecialidadeDAO.gravar(especialidade);
+        Especialidade Novaespecialidade = new Especialidade();
+        Novaespecialidade.setNome(jTextFieldNome.getText());
+        Novaespecialidade.setDescricao(jTextFieldDescricao.getText());
+        
+        EspecialidadeDAO.gravar(Novaespecialidade);
         
         JOptionPane.showMessageDialog(this, 
                 "Especialidade gravada com sucesso", 
                 "Especialidades", 
                 JOptionPane.INFORMATION_MESSAGE);
+        
         dispose();
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
@@ -201,10 +222,10 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabelDescricaoEspecialidade;
     private javax.swing.JLabel jLabelNomeDaEspecialidade;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelAdicionar;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldDescricao;
