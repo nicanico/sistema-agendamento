@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import br.senai.sp.jandira.AgendaApp;
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
+import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 
@@ -148,6 +149,22 @@ public class TesteObjetos {
         AgendaApp.main(args);
 
         System.out.println("--------" + PlanoDeSaude.getQuantidade());
+        
+        //testes do Plano de Saude 
+        
+        PlanoDeSaudeDAO teste = new PlanoDeSaudeDAO();
+        
+        PlanoDeSaude plano1 = new PlanoDeSaude("Amil");
+        teste.gravar(plano1);
+        
+        PlanoDeSaude plano2 = new PlanoDeSaude("Notredame");
+        teste.gravar(plano2);
+        
+        for (PlanoDeSaude ee : teste.getPlano()){
+            System.out.println(ee.getOperadora());
+        }
+         
+        
         
     }
 

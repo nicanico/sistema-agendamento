@@ -191,7 +191,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     private void jButtonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMedicosActionPerformed
@@ -250,7 +250,6 @@ public class HomeFrame extends javax.swing.JFrame {
     private void initPanels() {
         
         panelEspecialidades = new PanelEspecialidades();
-        
         panelEspecialidades.setBounds(
                 POS_X, 
                 POS_Y, 

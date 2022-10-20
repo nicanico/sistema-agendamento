@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author 22282218
- */
 public class PanelEspecialidades extends javax.swing.JPanel {
     
     private int linha;
@@ -151,7 +145,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
         Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
         
         EspecialidadesDialog especialidadeDialog = 
-                new EspecialidadesDialog(null, true, especialidade);
+                new EspecialidadesDialog(null, true, especialidade,OperacaoEnum.EDITAR);
         especialidadeDialog.setVisible(true);
         preencherTabela();
         
@@ -159,7 +153,7 @@ public class PanelEspecialidades extends javax.swing.JPanel {
     
     private void jButtonadicionarNovaEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonadicionarNovaEspecialidadeActionPerformed
         EspecialidadesDialog especialidadeDialog = 
-                new EspecialidadesDialog(null, true);
+                new EspecialidadesDialog(null, true, OperacaoEnum.ADICIONAR);
         especialidadeDialog.setVisible(true);
         preencherTabela();
         

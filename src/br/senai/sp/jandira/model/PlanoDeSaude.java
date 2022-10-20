@@ -5,6 +5,8 @@ import java.time.Period;
 
 public class PlanoDeSaude {
 	
+        private static int contador = 1;
+        private Integer codigoDoPlano;
 	private String operadora;
 	private String categoria;
 	private String numero;
@@ -14,11 +16,35 @@ public class PlanoDeSaude {
 	public PlanoDeSaude(String operadora) {
 		this.operadora = operadora;
 		this.quantidade++;
+                geradorCodigo();
 	}
 	public PlanoDeSaude() {
 		this.quantidade++;
 	}
+        public PlanoDeSaude(String operdora, String categoria, String numero){
+            this.operadora = operadora;
+            this.categoria = categoria;
+            this.numero = numero;
+            geradorCodigo();
+        }
+        
+        private void geradorCodigo(){
+            this.contador++;
+            this.codigoDoPlano = contador;
+        }
+        
+        public int getContador() {
+            return contador;
+        }
 	
+        public Integer getCodigo() {
+            return codigoDoPlano;
+        }
+        
+        public void setCodigo(Integer codigo){
+            this.codigoDoPlano = codigo;
+        }
+        
 	public void setOperadora(String operadora) {
 		this.operadora = operadora;
 	}

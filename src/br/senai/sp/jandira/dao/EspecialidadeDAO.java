@@ -35,9 +35,6 @@ public class EspecialidadeDAO {
     public static void atualizar(Especialidade especialidaeAtualizada) {
         for(Especialidade e : especialidades) {
             if (e.getCodigo() == especialidaeAtualizada.getCodigo()) {
-                //e = especialidaeAtualizada;
-                //especialidades.remove(e);
-                //especialidades.add(especialidaeAtualizada);
                 especialidades.set(especialidades.indexOf(e), especialidaeAtualizada);
                 break;
       }
