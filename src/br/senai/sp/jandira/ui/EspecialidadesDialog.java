@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
+
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
@@ -9,10 +6,7 @@ import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author 22282218
- */
+
 public class EspecialidadesDialog extends javax.swing.JDialog {
 
         private Especialidade especialidade;
@@ -123,6 +117,12 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
         });
         panelDetalhesEspecialidade.add(jTextFieldCodigo);
         jTextFieldCodigo.setBounds(20, 60, 110, 22);
+
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeActionPerformed(evt);
+            }
+        });
         panelDetalhesEspecialidade.add(jTextFieldNome);
         jTextFieldNome.setBounds(20, 110, 410, 22);
 
@@ -212,6 +212,10 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
     private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
+
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     /**
      * @param args the command line arguments

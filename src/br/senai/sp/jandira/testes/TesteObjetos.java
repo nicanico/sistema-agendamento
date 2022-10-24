@@ -137,18 +137,18 @@ public class TesteObjetos {
         System.out.println("------OPERADORAS------");
         for (PlanoDeSaude e : planosDeSaude) {
             System.out.println(e.getOperadora());
-            System.out.println(e.getQuantidade());
+            //System.out.println(e.getQuantidade());
         }
 
         PlanoDeSaude xpto = new PlanoDeSaude();
         PlanoDeSaude xpto2 = new PlanoDeSaude();
         PlanoDeSaude xpto3 = new PlanoDeSaude();
 
-        System.out.println("--------" + PlanoDeSaude.getQuantidade());
+        //System.out.println("--------" + PlanoDeSaude.getQuantidade());
 
         AgendaApp.main(args);
 
-        System.out.println("--------" + PlanoDeSaude.getQuantidade());
+        //System.out.println("--------" + PlanoDeSaude.getQuantidade());
         
         //testes do Plano de Saude 
         
@@ -156,6 +156,8 @@ public class TesteObjetos {
         
         PlanoDeSaude plano1 = new PlanoDeSaude("Amil");
         teste.gravar(plano1);
+        
+        
         
         PlanoDeSaude plano2 = new PlanoDeSaude("Notredame");
         teste.gravar(plano2);

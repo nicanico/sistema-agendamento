@@ -16,7 +16,7 @@ public class Agenda {
 		this.dataDeConsulta = dataDeConsulta;
 	}
 	
-		public LocalDate getDataDeConsulta() {
+	public LocalDate getDataDeConsulta() {
 		return dataDeConsulta;
 	}
 		

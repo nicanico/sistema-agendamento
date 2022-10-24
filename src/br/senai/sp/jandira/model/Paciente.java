@@ -26,9 +26,8 @@ public class Paciente {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
-	public int getDataDeNascimento() {
-		Period p = Period.between(dataDeNascimento, LocalDate.now());
-		return p.getYears();
+	public LocalDate getDataDeNascimento() {
+		return dataDeNascimento;
 	}
 
 	public void setTelefone(String telefone) {
