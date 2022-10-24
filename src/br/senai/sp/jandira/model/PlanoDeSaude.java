@@ -1,7 +1,7 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 
 
 public class PlanoDeSaude {
@@ -17,7 +17,7 @@ public class PlanoDeSaude {
 		this.operadora = operadora;
                 geradorCodigo();
 	}
-	public PlanoDeSaude() {
+	public PlanoDeSaude(){
 		geradorCodigo();
 	}
         public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade){
@@ -72,9 +72,8 @@ public class PlanoDeSaude {
 	
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;
-		
 	}
-	
+        
 	public LocalDate getValidade() {
 		return validade;
 	}

@@ -1,7 +1,6 @@
 
 package br.senai.sp.jandira.ui;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import java.awt.Toolkit;
 
 

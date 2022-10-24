@@ -1,6 +1,5 @@
 
 package br.senai.sp.jandira.ui;
-
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import br.senai.sp.jandira.model.PlanoDeSaude;

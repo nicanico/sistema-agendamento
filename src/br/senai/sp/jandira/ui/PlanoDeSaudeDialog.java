@@ -234,30 +234,34 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
         planoDeSaude.setOperadora(jTextFieldOperadora.getText());
         planoDeSaude.setCategoria(jTextFieldCategoria.getText());
         planoDeSaude.setNumero(jTextFieldNumero.getText());
-        planoDeSaude.setValidade(LocalDate.parse(jTextFieldValidade.getText(), DateTimeFormatter.ISO_DATE));
+        planoDeSaude.setValidade(LocalDate.parse(
+                jTextFieldValidade.getText(),
+                DateTimeFormatter.ISO_DATE));
         
-       
-         PlanoDeSaudeDAO.atualizar(planoDeSaude);
+        PlanoDeSaudeDAO.atualizar(planoDeSaude);
         
          JOptionPane.showMessageDialog(null, 
-                "Plano de Saúde atualizado com sucesso", "Plano de Saúde", JOptionPane.INFORMATION_MESSAGE);
+                "Plano de Saúde atualizado com sucesso", 
+                "Plano de Saúde", 
+                JOptionPane.INFORMATION_MESSAGE);
         
         dispose();
     }
     
     private void adicionar(){
-        //Criar especialidade
         PlanoDeSaude novoPlano = new PlanoDeSaude();
         novoPlano.setOperadora(jTextFieldOperadora.getText());
         novoPlano.setCategoria(jTextFieldCategoria.getText());
         novoPlano.setNumero(jTextFieldNumero.getText());
-        novoPlano.setValidade(LocalDate.parse(jTextFieldValidade.getText(), DateTimeFormatter.ISO_DATE));
+        novoPlano.setValidade(LocalDate.parse(
+                jTextFieldValidade.getText(), 
+                DateTimeFormatter.ISO_DATE));
         
         PlanoDeSaudeDAO.gravar(novoPlano);
         
-        JOptionPane.showMessageDialog(this, 
-                "Plano de Saúde gravado com sucesso", 
-                "Plano de Saúde", 
+        JOptionPane.showMessageDialog(this,
+                "Plano de Saúde gravado com sucesso!", 
+                "Plano de Saúde",
                 JOptionPane.INFORMATION_MESSAGE);
         
         dispose();
@@ -283,4 +287,6 @@ public class PlanoDeSaudeDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldOperadora;
     private javax.swing.JTextField jTextFieldValidade;
     // End of variables declaration//GEN-END:variables
+
+    
 }
