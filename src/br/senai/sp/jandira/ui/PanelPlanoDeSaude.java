@@ -121,7 +121,6 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
        Integer codigo = Integer.valueOf(codigoStr);
        
        return codigo;
-    
 
     }//GEN-LAST:event_jButtonExcluirPlanoActionPerformed
 
@@ -130,16 +129,18 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
         if(getLinha() != -1){
             editarPlano();
         }else{
-            JOptionPane.showConfirmDialog(
+            JOptionPane.showMessageDialog(
                 this,
                 "Por favor, selecione o plano que você deseja editar!",
-                "Especialidades",
+                "Planos de Saúde",
                 JOptionPane.WARNING_MESSAGE);
         }
-
+        
+        
+        
     }//GEN-LAST:event_jButtonAtualizarPlanoActionPerformed
      private void editarPlano() {
-         PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
+        PlanoDeSaude planoDeSaude = PlanoDeSaudeDAO.getPlanoDeSaude(getCodigo());
         
         PlanoDeSaudeDialog planoDeSaudeDialog = 
                 new PlanoDeSaudeDialog(null, true, 

@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 
 
@@ -46,7 +47,7 @@ public class PlanoDeSaude {
         }
         
 	public void setOperadora(String operadora) {
-		this.operadora = operadora;
+                this.operadora = operadora;  
 	}
 	
 	public String getOperadora() {
