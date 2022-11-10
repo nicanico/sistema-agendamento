@@ -29,6 +29,15 @@ public class PlanoDeSaude {
             geradorCodigo();
         }
         
+        public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade, Integer codigoDoPlano){
+            this.operadora = operadora;
+            this.categoria = categoria;
+            this.numero = numero;
+            this.validade = validade;
+            this.codigoDoPlano = codigoDoPlano;
+            this.contador = codigoDoPlano;
+        }
+        
         private void geradorCodigo(){
             this.contador++;
             this.codigoDoPlano = contador;
@@ -79,5 +88,7 @@ public class PlanoDeSaude {
 		return validade;
 	}
 	
-	
+	public String getFormatacaoDoPlanoDeSaudeComPontoEVirgula(){
+            return this.codigoDoPlano + ";" + this.numero + ";" + this.categoria + ";" + this.operadora + ";" + this.validade;
+        }
 }
