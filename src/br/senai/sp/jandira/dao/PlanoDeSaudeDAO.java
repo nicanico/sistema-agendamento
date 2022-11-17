@@ -5,6 +5,7 @@ import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,7 +20,10 @@ import javax.swing.table.DefaultTableModel;
 public class PlanoDeSaudeDAO {
     
     private final static String URL = "C:\\Users\\22282218\\sistema-plano\\Plano.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282218\\sistema-plano\\Plano-temp.txt";
     private final static Path PATH = Paths.get(URL);
+    private final static Path PATH_TEMP = Paths.get(URL_TEMP);
+    
     
     private static ArrayList<PlanoDeSaude> planosDeSaude = new ArrayList<>();
     
@@ -65,14 +69,50 @@ public class PlanoDeSaudeDAO {
                 break;
             }
         }
+        
+        atualizarArquivo();
     }
     public static void excluirPlano(Integer codigo){
         for(PlanoDeSaude e : planosDeSaude) {
-            if (e.getCodigo() == codigo){
+            if (e.getCodigo().equals(codigo)){
                 planosDeSaude.remove(e);
                 break;
             }
         }
+        
+        atualizarArquivo();
+        
+    }
+    
+    public static void atualizarArquivo(){
+        
+        File arquivoAtual = new File(URL);
+        File arquivoTemp = new File(URL_TEMP);
+        
+        try {
+            
+            arquivoTemp.createNewFile();
+            
+            BufferedWriter bwTemp = Files.newBufferedWriter(
+                    PATH_TEMP, 
+                    StandardOpenOption.APPEND, 
+                    StandardOpenOption.WRITE);
+            
+            for(PlanoDeSaude e : planosDeSaude){
+                bwTemp.write(e.getFormatacaoDoPlanoDeSaudeComPontoEVirgula());
+                bwTemp.newLine();
+            }
+            
+            bwTemp.close();
+            
+            arquivoAtual.delete();
+            
+            arquivoTemp.renameTo(arquivoAtual);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
     }
     
     public static void criarPlanosDeSaude(){
@@ -84,6 +124,7 @@ public class PlanoDeSaudeDAO {
             
             while (linha != null){
                 String[] vetor = linha.split(";");
+                
                 String[] data = vetor[4].split("/");
                 
                 PlanoDeSaude e = new PlanoDeSaude(
@@ -100,6 +141,8 @@ public class PlanoDeSaudeDAO {
                 
                 linha = leitor.readLine();
             }
+            
+            leitor.close();
             
             
         } catch (IOException e) {

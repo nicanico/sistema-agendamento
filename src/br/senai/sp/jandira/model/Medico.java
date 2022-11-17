@@ -1,12 +1,17 @@
 package br.senai.sp.jandira.model;
 
+import java.time.LocalDate;
+
 public class Medico {
 	
+        private static int contador = 100;
+        private Integer codigoDoMedico;
 	private String nome;
 	private Especialidade[] especialidades;
 	private String telefone;
 	private String email;
 	private String crm;
+        private LocalDate dataDeNascimento;
 	
 
 	public void setNome(String nome) {
