@@ -105,38 +105,55 @@ public class MedicoDAO {
                
     }
     
-//    public static void criarListaDeMedicos(){
-//        
-//        try {
-//            BufferedReader leitor = Files.newBufferedReader(PATH);
-//            
-//            String linha = leitor.readLine();
-//            
-//            while (linha != null){
-//                String[] vetor = linha.split(";");
-//                String[] data = vetor[4].split("/");
-//                
-//                
-//                
-//                Medico e = new Medico(
-//                        vetor[1],
-//                        vetor[2],
-//                        vetor[3],
-//                        vetor[4],
-//                        vetor[5],
-//                        LocalDate.of(Integer.parseInt(data[2]), 
-//                                Integer.parseInt(data[1]), 
-//                                Integer.parseInt(data[0])),
-//                        Integer.valueOf(vetor[0]));
-//            }
-//            
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Erro ao ler arquivo!");
-//        }
-//    }
-//    public static DefaultTableModel getTabelaEspecialidade(){
-//        
-//    
-//    
-//    }
+    public static void criarListaDeMedicos(){
+        
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            
+            String linha = leitor.readLine();
+            
+            while (linha != null){
+                String[] vetor = linha.split(";");
+                String[] data = vetor[5].split("/");
+                
+                
+                
+                Medico e = new Medico(
+                        vetor[1],
+                        vetor[2],
+                        vetor[3],
+                        vetor[4],
+                        LocalDate.of(Integer.parseInt(data[2]), 
+                                Integer.parseInt(data[1]), 
+                                Integer.parseInt(data[0])),
+                        Integer.valueOf(vetor[0]));
+                
+                medicos.add(e);
+                
+                linha = leitor.readLine();
+            }
+            
+            leitor.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao ler arquivo!");
+        }
+    }
+    
+    public static DefaultTableModel getTabelaMedicos(){
+        String[] titulo = {"CODIGO", "CRM", "NOME", "TELEFONE"};
+        String[][] dados = new String[medicos.size()][6];
+        
+        for( Medico e : medicos){
+            int i = medicos.indexOf(e);
+            dados[i][0] = e.getCodigo().toString();
+            dados[i][1] = e.getCrm();
+            dados[i][2] = e.getNome();
+            dados[i][3] = e.getTelefone();
+        }
+    
+        return  new DefaultTableModel(dados, titulo);
+    
+    }
+
 }

@@ -45,6 +45,16 @@ public class Medico {
         this.contador = codigoDoMedico;
     }
     
+    public Medico(String nome, String telefone, String email, String crm, LocalDate dataDeNascimento, Integer codigoDoMedico){
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.crm = crm;
+        this.dataDeNascimento = dataDeNascimento;
+        this.codigoDoMedico = codigoDoMedico;
+        this.contador = codigoDoMedico;
+    }
+    
     //Codigo
     private void gerarCodigo(){
         this.contador++;
