@@ -336,6 +336,8 @@ public class MedicoDialog extends javax.swing.JDialog {
             novoMedico.setTelefone(jTextFieldNumeroDeTelefone.getText());
             novoMedico.setDataNascimento(LocalDate.parse(formattedTextFieldDataNascimento.getText(),formatacao));
             
+            
+            
         dispose();
     }
         
