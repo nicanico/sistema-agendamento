@@ -1,13 +1,14 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Medico {
 
     private static int contador = 100;
     private Integer codigoDoMedico;
     private String nome;
-    private Especialidade[] especialidades;
+    private ArrayList<Especialidade> especialidades;
     private String telefone;
     private String email;
     private String crm;
@@ -24,7 +25,7 @@ public class Medico {
         gerarCodigo();
     }
     
-    public Medico(String nome, Especialidade[] especialidades, String telefone, String email, String crm, LocalDate dataDeNascimento){
+    public Medico(String nome, ArrayList especialidades, String telefone, String email, String crm, LocalDate dataDeNascimento){
         this.nome = nome;
         this.especialidades = especialidades;
         this.telefone = telefone;
@@ -34,7 +35,7 @@ public class Medico {
         gerarCodigo();
     }
     
-    public Medico(String nome, Especialidade[] especialidades, String telefone, String email, String crm, LocalDate dataDeNascimento, Integer codigoDoMedico){
+    public Medico(String nome, ArrayList especialidades, String telefone, String email, String crm, LocalDate dataDeNascimento, Integer codigoDoMedico){
         this.nome = nome;
         this.especialidades = especialidades;
         this.telefone = telefone;
@@ -45,7 +46,7 @@ public class Medico {
         this.contador = codigoDoMedico;
     }
     
-    public Medico(String nome, String telefone, String email, String crm, LocalDate dataDeNascimento, Integer codigoDoMedico){
+    public Medico(String nome, String telefone, String email, String crm, LocalDate dataDeNascimento, Integer codigoDoMedico, ArrayList<Especialidade> especialidades){
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -53,6 +54,7 @@ public class Medico {
         this.dataDeNascimento = dataDeNascimento;
         this.codigoDoMedico = codigoDoMedico;
         this.contador = codigoDoMedico;
+        this.especialidades = especialidades;
     }
     
     //Codigo
@@ -80,11 +82,11 @@ public class Medico {
         return nome;
     }
 
-    public void setEspecialidades(Especialidade[] especialidades) {
+    public void setEspecialidades(ArrayList especialidades) {
         this.especialidades = especialidades;
     }
 
-    public Especialidade[] getEspecialidades() {
+    public ArrayList getEspecialidades() {
         return especialidades;
     }
 
@@ -111,6 +113,15 @@ public class Medico {
     public String getCrm() {
         return crm;
     }
+    
+   
+    public void setDataNascimento(LocalDate dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
+	}
+        
+	public LocalDate getDataNascimento() {
+		return dataDeNascimento;
+	}
     
     //Fortamação com ponto e virgula para DAO
     public String getFormatacaoDoMedicoComPontoEVirgula(){

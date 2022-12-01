@@ -105,6 +105,21 @@ public class MedicoDAO {
                
     }
     
+    public static ArrayList<Especialidade> separarEspecialidade(String linha){
+        String[] vetor = linha.split("#");
+        int codigoEsp = 6;
+        
+        ArrayList<Especialidade> especialidades = new ArrayList<>();
+        
+        while(vetor.length > codigoEsp){
+            especialidades.add(EspecialidadeDAO.getEspecialidade(Integer.valueOf(vetor[codigoEsp])));
+            codigoEsp++;
+        }
+        
+        return especialidades;
+    }
+    
+    
     public static void criarListaDeMedicos(){
         
         try {
@@ -117,7 +132,6 @@ public class MedicoDAO {
                 String[] data = vetor[5].split("/");
                 
                 
-                
                 Medico e = new Medico(
                         vetor[1],
                         vetor[2],
@@ -126,7 +140,8 @@ public class MedicoDAO {
                         LocalDate.of(Integer.parseInt(data[2]), 
                                 Integer.parseInt(data[1]), 
                                 Integer.parseInt(data[0])),
-                        Integer.valueOf(vetor[0]));
+                        Integer.valueOf(vetor[0]),
+                        separarEspecialidade(linha));
                 
                 medicos.add(e);
                 

@@ -13,7 +13,6 @@ public class Especialidade {
     public Especialidade(String nome) {
         this.nome = nome;
         gerarCodigo();
-
     }
 
     public Especialidade(String nome, String descricao) {
@@ -62,6 +61,10 @@ public class Especialidade {
         } else {
             JOptionPane.showMessageDialog(null, nome + "Não é valido!\nDeve conter pelo menos 3 letras");
         }
+    }
+    
+    public String toString(){
+        return this.nome;
     }
 
     public String getNome() {

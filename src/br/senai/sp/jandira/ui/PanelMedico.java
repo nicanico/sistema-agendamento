@@ -93,7 +93,6 @@ public class PanelMedico extends javax.swing.JPanel {
 
     private void jButtonadicionarNovoMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonadicionarNovoMedicoActionPerformed
 
-        Medico medico = MedicoDAO.getMedico(getCodigo());
         MedicoDialog medicoDialog = new MedicoDialog(
                 null, 
                 true, 
@@ -118,6 +117,12 @@ public class PanelMedico extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonatualizarMedicosActionPerformed
     
     private void editarMedico(){
+        Medico medico = MedicoDAO.getMedico(getCodigo());
+        
+        MedicoDialog medicoDialog = 
+            new MedicoDialog(null, true, medico,OperacaoEnum.EDITAR);
+        medicoDialog.setVisible(true);
+        preencherTabela();
         
     }
     
@@ -150,19 +155,16 @@ public class PanelMedico extends javax.swing.JPanel {
            preencherTabela();
        }
        
-    }
-       private Integer getCodigo(){
+       
+    }//GEN-LAST:event_jButtonDeleteMedicoActionPerformed
+    
+    private Integer getCodigo(){
        String codigoStr = jTableMedicos.getValueAt(getLinha(), 0).toString();
        Integer codigo = Integer.valueOf(codigoStr);
        
        return codigo;
-      
-    }//GEN-LAST:event_jButtonDeleteMedicoActionPerformed
-    
-   
-
-      
-    
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDeleteMedico;
@@ -187,6 +189,8 @@ public class PanelMedico extends javax.swing.JPanel {
         jTableMedicos.getColumnModel().getColumn(1).setPreferredWidth(190);
         jTableMedicos.getColumnModel().getColumn(2).setPreferredWidth(315);
         jTableMedicos.getColumnModel().getColumn(3).setPreferredWidth(190);
+        
+        
 
     }
 }
