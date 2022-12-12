@@ -3,7 +3,7 @@ package br.senai.sp.jandira.model;
 import javax.swing.JOptionPane;
 
 public class Especialidade {
-    
+
     private static int contador = 99;
     private Integer codigo;
     private String nome;
@@ -21,7 +21,7 @@ public class Especialidade {
         gerarCodigo();
 
     }
-    
+
     public Especialidade(String nome, String descricao, Integer codigo) {
         this.nome = nome;
         this.descricao = descricao;
@@ -33,14 +33,13 @@ public class Especialidade {
         gerarCodigo();
 
     }
-    
-    private void gerarCodigo(){
+
+    private void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
     }
 
     // Métodos de acesso aos atributos
-    
     public int getContador() {
         return contador;
     }
@@ -52,8 +51,6 @@ public class Especialidade {
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
-    
-    
 
     public void setNome(String nome) {
         if (nome.length() >= 3) {
@@ -62,8 +59,8 @@ public class Especialidade {
             JOptionPane.showMessageDialog(null, nome + "Não é valido!\nDeve conter pelo menos 3 letras");
         }
     }
-    
-    public String toString(){
+
+    public String toString() {
         return this.nome;
     }
 
@@ -84,9 +81,9 @@ public class Especialidade {
     public String getDescricao() {
         return descricao;
     }
-    
-    public String getEspecialidadeSeparadaPorPontoEVirgula(){
+
+    public String getEspecialidadeSeparadaPorPontoEVirgula() {
         return this.codigo + ";" + this.nome + ";" + this.descricao;
-        
+
     }
 }
