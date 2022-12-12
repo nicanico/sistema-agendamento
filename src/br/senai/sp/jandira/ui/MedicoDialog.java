@@ -27,6 +27,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         initComponents();
 
         medico = e;
+        this.operacao = operacao;
         preencherTitulo();
         preencherFormulario();
         preencherEpecialidades();
@@ -50,12 +51,12 @@ public class MedicoDialog extends javax.swing.JDialog {
     }
 
     private void preencherListaDeEspecialidadesMedico() {
-//        DefaultListModel<Especialidade> especialidadeMedico = new DefaultListModel<>();
-//        for (Especialidade e : medico.getEspecialidades()) {
-//            especialidadeMedico.addElement(e);
-//        }
+        DefaultListModel<Especialidade> especialidadeMedico = new DefaultListModel<>();
+        for (Especialidade e : medico.getEspecialidades()){
+            especialidadeMedico.addElement(e);
+        }
 
-       // jListEspecialidadesMedico.setModel(especialidadeMedico);
+        jListEspecialidadesMedico.setModel(especialidadeMedico);
     }
 
     private void preencherFormulario() {
@@ -73,7 +74,7 @@ public class MedicoDialog extends javax.swing.JDialog {
 
     private void preencherTitulo() {
 
-        jLabelTitulo.setText("Médicos -" + operacao);
+        jLabelTitulo.setText("Médicos - " + operacao);
 
         if (operacao == OperacaoEnum.EDITAR) {
             jLabelTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/atualizar.png")));
@@ -281,6 +282,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         jPanelMedico.setBounds(20, 70, 580, 280);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldCodigoDoMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoDoMedicoActionPerformed

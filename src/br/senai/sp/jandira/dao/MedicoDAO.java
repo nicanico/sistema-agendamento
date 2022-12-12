@@ -27,6 +27,7 @@ public class MedicoDAO {
     private static ArrayList<Medico> medicos = new ArrayList<>();
 
     public static void gravar(Medico e) {
+        
         medicos.add(e);
 
         try {
@@ -34,6 +35,10 @@ public class MedicoDAO {
                     PATH,
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
+            
+            escritor.write(e.getFormatacaoDoMedicoComPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Ocorreu erro!");
@@ -106,7 +111,7 @@ public class MedicoDAO {
     }
 
     public static ArrayList<Especialidade> separarEspecialidade(String linha) {
-        String[] vetor = linha.split("#");
+        String[] vetor = linha.split(";");
         int codigoEsp = 6;
 
         ArrayList<Especialidade> especialidades = new ArrayList<>();
@@ -128,16 +133,14 @@ public class MedicoDAO {
 
             while (linha != null) {
                 String[] vetor = linha.split(";");
-                String[] data = vetor[5].split("/");
+
 
                 Medico e = new Medico(
                         vetor[1],
-                        vetor[2],
                         vetor[3],
+                        vetor[2],
                         vetor[4],
-                        LocalDate.of(Integer.parseInt(data[2]),
-                                Integer.parseInt(data[1]),
-                                Integer.parseInt(data[0])),
+                        LocalDate.parse(vetor[5]),
                         Integer.valueOf(vetor[0]),
                         separarEspecialidade(linha));
 
@@ -178,7 +181,7 @@ public class MedicoDAO {
 
     public static DefaultTableModel getTabelaMedicos() {
         String[] titulo = {"CODIGO", "CRM", "NOME", "TELEFONE"};
-        String[][] dados = new String[medicos.size()][6];
+        String[][] dados = new String[medicos.size()][4];
 
         for (Medico e : medicos) {
             int i = medicos.indexOf(e);

@@ -86,7 +86,7 @@ public class Medico {
         this.especialidades = especialidades;
     }
     
-    public ArrayList getEspecialidades() {
+    public ArrayList<Especialidade> getEspecialidades() {
         return especialidades;
     }
     
@@ -133,7 +133,7 @@ public class Medico {
 
     //Fortamação com ponto e virgula para DAO
     public String getFormatacaoDoMedicoComPontoEVirgula() {
-        return this.codigoDoMedico + ";" + this.nome + ";" + this.email + ";" + this.telefone + ";" + this.crm + ";" + this.especialidades + ";" + this.dataDeNascimento + ";" + listaToString(this.especialidades);
+        return this.codigoDoMedico + ";" + this.nome + ";" + this.email + ";" + this.telefone + ";" + this.crm + ";" + this.dataDeNascimento + ";" + listaToString(this.especialidades);
         
     }
 }
